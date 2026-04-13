@@ -94,11 +94,11 @@ void editar() throws Exception {
     IO.println("Editando o livro " + livro.getTitulo() + "(pressione ENTER para não modificar)");
 
     String novoTitulo = Input.scanString("Título (" + livro.getTitulo() + "): ", true);
-    if (novoTitulo == "")
+    if (novoTitulo.isEmpty())
         novoTitulo = livro.getTitulo();
 
     String novoAutor = Input.scanString("Autor (" + livro.getAutor() + "): ", true);
-    if (novoAutor == "")
+    if (novoAutor.isEmpty())
         novoAutor = livro.getAutor();
 
     int novoAno = Input.scanInt("Ano (" + livro.getAnoPublicacao() + "): ", true);

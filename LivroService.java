@@ -14,7 +14,7 @@ public class LivroService {
 
         novoLivro.setTitulo(novoLivro.getTitulo().trim().toUpperCase());
 
-        if (novoLivro.getAutor() == null || novoLivro.getTitulo().isEmpty())
+        if (novoLivro.getAutor() == null || novoLivro.getAutor().isEmpty())
             throw new Exception("Autor inválido");
 
         novoLivro.setAutor(novoLivro.getAutor().trim().toUpperCase());
