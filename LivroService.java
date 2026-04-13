@@ -39,10 +39,24 @@ public class LivroService {
 
         // Nesta parte estaria chamando a camada Repository
         acervo.add(novoLivroValidado);
+        ordenarPorTitulo();
     }
 
     public List<Livro> listar() {
         return acervo;
+    }
+
+    // melhoria livre: ordenar os livros por título
+    private void ordenarPorTitulo() {
+        for (int i = 0; i < acervo.size() - 1; i++) {
+            for (int j = 0; j < acervo.size() - 1 - i; j++) {
+                if (acervo.get(j).getTitulo().compareTo(acervo.get(j + 1).getTitulo()) > 0) {
+                    Livro temp = acervo.get(j);
+                    acervo.set(j, acervo.get(j + 1));
+                    acervo.set(j + 1, temp);
+                }
+            }
+        }
     }
 
     public List<Livro> pesquisar(String pesquisa) {
@@ -57,7 +71,7 @@ public class LivroService {
     }
 
     public void remover(int indice) throws Exception {
-        if (indice <= 0 || indice > acervo.size())
+        if (indice < 0 || indice > acervo.size())
             throw new Exception("Indíce inválido");
         acervo.remove(indice);
     }
@@ -72,5 +86,6 @@ public class LivroService {
         Livro livroValidado = validaLivro(livro);
 
         acervo.set(indice, livroValidado);
+        ordenarPorTitulo();
     }
 }
