@@ -58,7 +58,7 @@ void listar() {
 
 void pesquisar() {
 
-    String pesquisa = Input.scanString("Digite parte do título: ");
+    String pesquisa = Input.scanString("Digite parte do título, autor, ou ano de publicação: ");
 
     List<Livro> livros = service.pesquisar(pesquisa);
     imprimirLista(livros);

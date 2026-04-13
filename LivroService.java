@@ -45,11 +45,12 @@ public class LivroService {
         return acervo;
     }
 
-    public List<Livro> pesquisar(String titulo) {
+    public List<Livro> pesquisar(String pesquisa) {
         List<Livro> livrosEncontrados = new ArrayList<>();
-        titulo = titulo.toUpperCase();
+        pesquisa = pesquisa.toUpperCase();
         for (Livro livro : acervo) {
-            if (livro.getTitulo().contains(titulo))
+            String infoLivro = livro.getTitulo() + livro.getAutor() + livro.getAnoPublicacao();
+            if (infoLivro.contains(pesquisa))
                 livrosEncontrados.add(livro);
         }
         return livrosEncontrados;
